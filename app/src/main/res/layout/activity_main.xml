@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="#172126"
+    tools:context=".MainActivity">
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/bag">
+    </ImageView>
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/beduShop"
+        android:text="@string/homeTitle"
+        android:layout_gravity="center"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="50dp"
+            android:width="250dp"
+            android:drawablePadding="12dp"
+            android:drawableLeft="@drawable/profile"
+            android:hint="@string/emailText"
+            android:inputType="textWebEmailAddress"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white">
+
+        </EditText>
+        <TextView
+            android:id="@+id/emailError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textColor="@color/red"
+            android:text="Por favor completar Correo Electronico"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="250dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/lock"
+            android:drawablePadding="12dp"
+            android:hint="@string/passwordText"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white">
+
+        </EditText>
+        <TextView
+            android:id="@+id/passwordError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textColor="@color/red"
+            android:text="Por favor completar la contraseña"
+            android:visibility="gone"/>
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/login"
+            android:backgroundTint="@color/beduShop"
+            android:layout_marginTop="48dp"
+            >
+        </Button>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:text="@string/register"/>
+        <TextView
+            android:id="@+id/loginSuccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_gravity="center"
+            android:textColor="@color/green"
+            android:text="Inicio de Sesion Exitoso!"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</LinearLayout>

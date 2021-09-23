@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Bedu Shop</string>
+    <string name="homeTitle">Bedu Shop</string>
+    <string name="emailText">Correo electrónico</string>
+    <string name="passwordText">Contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="register">Regístrate aquí</string>
+</resources>
