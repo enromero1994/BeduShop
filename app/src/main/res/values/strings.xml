@@ -5,4 +5,8 @@
     <string name="passwordText">Contraseña</string>
     <string name="login">Iniciar Sesión</string>
     <string name="register">Regístrate aquí</string>
+    <string name="registerTitle">Regístrate</string>
+    <string name="fullName">Nombre completo</string>
+    <string name="phone">Telefono</string>
+
 </resources>

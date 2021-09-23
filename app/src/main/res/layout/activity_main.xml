@@ -95,7 +95,9 @@
             android:paddingTop="10dp"
             android:layout_gravity="center"
             android:textColor="@color/white"
-            android:text="@string/register"/>
+            android:text="@string/register"
+            android:id="@+id/Register"
+            />
         <TextView
             android:id="@+id/loginSuccess"
             android:layout_width="wrap_content"
