@@ -34,8 +34,6 @@ class ProductListFragment : Fragment() {
     //configuramos lo necesario para desplegar el RecyclerView
     private fun setUpRecyclerView(){
 
-
-
         recyclerProducts.setHasFixedSize(true)
         recyclerProducts.layoutManager = LinearLayoutManager(activity)
         //seteando el Adapter

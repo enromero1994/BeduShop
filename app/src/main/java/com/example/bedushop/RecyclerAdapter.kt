@@ -1,6 +1,7 @@
 package com.example.bedushop
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Handler
@@ -10,22 +11,52 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.detail_product_fragment.view.*
 import java.util.concurrent.Executors
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import android.os.Bundle
+import android.app.Activity
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import com.example.bedushop.BuildConfig.DEBUG
 
-//Declaración con constructor
+
+
 class RecyclerAdapter(
     private val context:Context,
     private val products: List<Product>,
     private val clickListener: (Product) -> Unit): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
-    //Aquí atamos el ViewHolder
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = products.get(position)
+
         holder.bind(product, context)
 
-        holder.view.setOnClickListener{clickListener(product)}
 
+        holder.view.setOnClickListener(){
+
+
+            val bundle = Bundle()
+            bundle.putString("titulo",product.title)
+            bundle.putString("price",product.price)
+            bundle.putString("description",product.description)
+            bundle.putString("image",product.image)
+            Toast.makeText(context, product.image, Toast.LENGTH_SHORT).show()
+
+            Navigation.findNavController(holder.view).navigate(R.id.productFragment,bundle)
+
+
+
+        }
     }
 
 
@@ -38,12 +69,11 @@ class RecyclerAdapter(
         return products.size
     }
 
-    //El ViewHolder ata los datos del RecyclerView a la Vista para desplegar la información
-    //También se encarga de gestionar los eventos de la View, como los clickListeners
+
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        //obteniendo las referencias a las Views
+
         val productName = view.findViewById(R.id.titleProduct) as TextView
-       // val description = view.findViewById(R.id.tvDescription) as TextView
+        //val description = view.findViewById(R.id.descriptionProduct) as TextView
         val price = view.findViewById(R.id.priceProduct) as TextView
         val image = view.findViewById(R.id.imgProduct) as ImageView
 
@@ -53,7 +83,7 @@ class RecyclerAdapter(
         //"atando" los datos a las Views
         fun bind(product: Product, context: Context){
             productName.text = product.title
-           // description.text = product.description
+            //description.text = product.description
             price.text = product.price
             image.setImageBitmap(product.image)
         }

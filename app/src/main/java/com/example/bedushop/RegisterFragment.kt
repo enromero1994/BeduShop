@@ -19,6 +19,7 @@ class RegisterFragment : Fragment() {
     ): View? {
         setHasOptionsMenu(true)
         return inflater.inflate(R.layout.register_fragment, container, false)
+
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
