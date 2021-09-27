@@ -30,9 +30,6 @@ class ProductFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
-
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.product_fragment, container, false)
         val titleView = view.findViewById<TextView>(R.id.titleProduct)
         val priceView = view.findViewById<TextView>(R.id.priceProduct)
@@ -50,7 +47,7 @@ class ProductFragment : Fragment() {
         titleView.text = title
         priceView.text = price
         descriptionView.text = description
-        Toast.makeText(context,image,Toast.LENGTH_SHORT).show()
+
 
         return view
     }

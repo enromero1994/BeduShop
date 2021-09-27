@@ -23,7 +23,6 @@ class HomeFragment : Fragment() {
     private lateinit var loginSuccess : TextView
     private lateinit var Register : TextView
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -61,10 +60,6 @@ class HomeFragment : Fragment() {
             if(email.text.isNotEmpty() && password.text.isNotEmpty()){
 
                 findNavController().navigate(R.id.productListFragment, null)
-
-
-
-
             }
 
         }
@@ -88,12 +83,16 @@ class HomeFragment : Fragment() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
-
             }
 
         })
 
 
+    }
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.findItem(R.id.item1).isVisible = false
+        menu.findItem(R.id.item2).isVisible = false
 
     }
 }

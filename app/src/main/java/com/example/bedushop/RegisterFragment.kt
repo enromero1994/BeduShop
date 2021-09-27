@@ -30,5 +30,11 @@ class RegisterFragment : Fragment() {
 
 
     }
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.findItem(R.id.item1).isVisible = false
+        menu.findItem(R.id.item2).isVisible = false
+
+    }
 
 }

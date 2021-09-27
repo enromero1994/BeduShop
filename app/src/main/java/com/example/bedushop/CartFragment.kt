@@ -14,8 +14,6 @@ class CartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.cart_fragment, container, false)
-
-
         return view
     }
 

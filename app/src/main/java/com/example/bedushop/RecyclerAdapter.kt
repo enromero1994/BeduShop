@@ -11,22 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.detail_product_fragment.view.*
 import java.util.concurrent.Executors
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import android.os.Bundle
-import android.app.Activity
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import com.example.bedushop.BuildConfig.DEBUG
+
 
 
 
@@ -44,13 +33,11 @@ class RecyclerAdapter(
 
         holder.view.setOnClickListener(){
 
-
             val bundle = Bundle()
             bundle.putString("titulo",product.title)
             bundle.putString("price",product.price)
             bundle.putString("description",product.description)
             bundle.putString("image",product.image)
-            Toast.makeText(context, product.image, Toast.LENGTH_SHORT).show()
 
             Navigation.findNavController(holder.view).navigate(R.id.productFragment,bundle)
 
@@ -73,17 +60,14 @@ class RecyclerAdapter(
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
         val productName = view.findViewById(R.id.titleProduct) as TextView
-        //val description = view.findViewById(R.id.descriptionProduct) as TextView
         val price = view.findViewById(R.id.priceProduct) as TextView
         val image = view.findViewById(R.id.imgProduct) as ImageView
 
 
 
 
-        //"atando" los datos a las Views
         fun bind(product: Product, context: Context){
             productName.text = product.title
-            //description.text = product.description
             price.text = product.price
             image.setImageBitmap(product.image)
         }

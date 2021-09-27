@@ -13,5 +13,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cart_fragment">Carrito de Compras</string>
     <string name="profile_fragment">Perfil de Usuario</string>
-
+    <string name="title_product">Fjallraven - Foldsack No. 1 Backpack, Fits</string>
+    <string name="price_product">$1,000</string>
+    <string name="detail1_product">En 6 meses sin interes</string>
+    <string name="detail2_product">Disponible en tu domicilio</string>
+    <string name="detail3_product">Entrega mañana</string>
+    <string name="button_cart_title">Agregar al Carrito</string>
+    <string name="description">Descripción</string>
+    <string name="description_detail">Lorem ipsum here va la descripcion</string>
 </resources>

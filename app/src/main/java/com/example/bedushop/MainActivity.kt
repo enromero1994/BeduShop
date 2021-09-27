@@ -25,12 +25,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_activity)
 
-
         val navView: BottomNavigationView = findViewById(R.id.bottomNav)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         AppBarConfiguration(navController.graph)
         navView.setupWithNavController(navController)
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if(destination.id == R.id.homeFragment || destination.id == R.id.registerFragment ) {
 
@@ -42,11 +42,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        hideMenu(navController,menu)
+        val inflater = menuInflater
+        inflater.inflate(R.menu.top_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -62,20 +62,9 @@ class MainActivity : AppCompatActivity() {
              }
          }
 
-
         return super.onOptionsItemSelected(item)
     }
-    private fun hideMenu(navController: NavController,menu: Menu?){
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.homeFragment || destination.id == R.id.registerFragment ) {
 
-            } else {
-                val inflater = menuInflater
-                inflater.inflate(R.menu.top_menu, menu)
-
-            }
-        }
-    }
 
     }
 
