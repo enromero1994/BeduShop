@@ -35,6 +35,8 @@
             app:elevation="2dp"
             app:menu="@menu/mobile_menu"
             android:layout_gravity="bottom"
+            app:itemTextColor="@drawable/color_botoom_nav"
+            app:itemIconTint="@drawable/color_botoom_nav"
 
             />
     </FrameLayout>

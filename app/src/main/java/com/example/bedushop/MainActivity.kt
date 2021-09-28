@@ -20,10 +20,10 @@ import android.net.Uri
 
 class MainActivity : AppCompatActivity() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.navigation_activity)
+
+            setContentView(R.layout.navigation_activity)
 
         val navView: BottomNavigationView = findViewById(R.id.bottomNav)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment
@@ -35,9 +35,11 @@ class MainActivity : AppCompatActivity() {
             if(destination.id == R.id.homeFragment || destination.id == R.id.registerFragment ) {
 
                 navView.visibility = View.GONE
+                getSupportActionBar()?.hide()
             } else {
 
                 navView.visibility = View.VISIBLE
+                getSupportActionBar()?.show()
             }
         }
 

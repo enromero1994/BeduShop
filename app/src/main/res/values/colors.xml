@@ -10,5 +10,8 @@
     <color name="beduShop">#FF5F29</color>
     <color name="red">#FF0000</color>
     <color name="green">#00FF00</color>
+    <color name="primaryBedu">#172126</color>
+    <color name="secondaryBedu">#f03c15</color>
+
 
 </resources>

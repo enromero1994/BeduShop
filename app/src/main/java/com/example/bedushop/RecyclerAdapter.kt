@@ -1,5 +1,6 @@
 package com.example.bedushop
 
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -23,8 +24,6 @@ class RecyclerAdapter(
     private val context:Context,
     private val products: List<Product>,
     private val clickListener: (Product) -> Unit): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = products.get(position)
 
@@ -45,8 +44,6 @@ class RecyclerAdapter(
 
         }
     }
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(layoutInflater.inflate(R.layout.product_layout, parent, false))
