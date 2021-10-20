@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -28,7 +31,7 @@
         android:id="@+id/productListFragment"
         android:name="com.example.bedushop.ProductListFragment"
         android:label="product_list_fragment"
-        tools:layout="@layout/product_list_fragment" >
+        tools:layout="@layout/product_list_fragment">
         <action
             android:id="@+id/action_productListFragment_to_productFragment"
             app:destination="@id/productFragment" />
@@ -48,12 +51,12 @@
         android:name="com.example.bedushop.ProductFragment"
         android:label="product_fragment"
         tools:layout="@layout/product_fragment" >
-        <argument
-            android:name="Product"
-            app:argType="com.example.bedushop.Product" />
         <action
             android:id="@+id/action_productFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <argument
+            android:name="product"
+            app:argType="com.example.bedushop.Product" />
     </fragment>
 
 

@@ -3,44 +3,101 @@ package com.example.bedushop
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
+import androidx.core.view.doOnPreDraw
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigator
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.TransitionInflater
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.product_fragment.*
 import kotlinx.android.synthetic.main.product_list_fragment.*
 import java.io.IOException
+import kotlin.math.log
 
 class ProductListFragment : Fragment() {
-    private lateinit var mAdapter : RecyclerAdapter
-    private var listener : (Product) ->Unit = {}
+
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        sharedElementReturnTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
         return inflater.inflate(R.layout.product_list_fragment, container, false)
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        setUpRecyclerView()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerView = view.findViewById(R.id.recyclerProducts)
+        val list = getProducts(requireContext())
+        val adapter = RecyclerAdapter(list, ProductItemListener)
+        recyclerView.adapter = adapter
+        // When user hits back button transition takes backward
+        postponeEnterTransition()
+        recyclerView.doOnPreDraw {
+            startPostponedEnterTransition()
+        }
     }
 
-    fun setListener(l: (Product) ->Unit){
-        listener = l
+    private val ProductItemListener = RecyclerAdapter.OnClickListener { product, textView ->
+        val direction: NavDirections =
+            ProductListFragmentDirections.actionProductListFragmentToProductFragment(product)
+
+        val extras = FragmentNavigatorExtras(
+            textView to product.title
+        )
+        findNavController().navigate(direction,extras)
     }
+
+
+
+
+    //private lateinit var mAdapter : RecyclerAdapter
+
+
+    /*override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.product_list_fragment, container, false)
+        setUpRecyclerView(view)
+        return view
+    }*/
+
+    //override fun onActivityCreated(savedInstanceState: Bundle?) {
+      //  super.onActivityCreated(savedInstanceState)
+        //setUpRecyclerView()
+
+    //}
 
     //configuramos lo necesario para desplegar el RecyclerView
-    private fun setUpRecyclerView(){
 
-        recyclerProducts.setHasFixedSize(true)
-        recyclerProducts.layoutManager = LinearLayoutManager(activity)
-        //seteando el Adapter
-        mAdapter = RecyclerAdapter( requireActivity(), getProducts(context), listener)
+    /*private fun setUpRecyclerView(view: View){
+
+
+        val recycler = view.findViewById<RecyclerView>(R.id.recyclerProducts)
+        recycler.setHasFixedSize(true)
+        recycler.layoutManager = LinearLayoutManager(activity)
+        mAdapter = RecyclerAdapter(getProducts(requireContext())) { product ->
+            val extras = FragmentNavigatorExtras(
+                textView to product.title
+            )
+            val action = ProductListFragmentDirections.actionProductListFragmentToProductFragment(product)
+            findNavController().navigate(action,extras)
+        }
         //asignando el Adapter al RecyclerView
-        recyclerProducts.adapter = mAdapter
-    }
+        recycler.adapter = mAdapter
+    }*/
+
     private fun getJsonDataFromAsset(context: Context?, fileName: String = "products.json"): String? {
         val jsonString: String
         try {

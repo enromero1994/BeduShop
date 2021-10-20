@@ -7,22 +7,26 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.support.v4.media.session.MediaSessionCompat.Token.fromBundle
+import android.transition.TransitionInflater
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 
 class ProductFragment : Fragment() {
 
+    private val args: ProductFragmentArgs by navArgs()
+    //Detalle de Producto
 
 
     override fun onCreateView(
@@ -30,7 +34,13 @@ class ProductFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
         val view = inflater.inflate(R.layout.product_fragment, container, false)
+        sharedElementEnterTransition =
+             TransitionInflater.from(context).inflateTransition(R.transition.transition1)
+                //androidx.transition.TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+        postponeEnterTransition(250, TimeUnit.MILLISECONDS)
+    /*
         val titleView = view.findViewById<TextView>(R.id.titleProduct)
         val priceView = view.findViewById<TextView>(R.id.priceProduct)
         val imageView = view.findViewById<ImageView>(R.id.imgProduct)
@@ -45,19 +55,52 @@ class ProductFragment : Fragment() {
             imageView.setImageBitmap(image)
         }
         titleView.text = title
-        priceView.text = price
+        priceView.text = "$${price}"
         descriptionView.text = description
+*/
 
-
+       // initViews(view)
         return view
     }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val title: TextView = view.findViewById(R.id.titleProduct)
+        title.text = args.product.title
+        title.transitionName = args.product.title
+    }
+
+    private fun initViews(view: View) {
+        var title: TextView = view.findViewById(R.id.titleProduct)
+        title.text = args.product.title
+
+        title.transitionName = args.product.title
+        //view.findViewById<TextView>(R.id.titleProduct).text = args.product.title
+        //view.findViewById<TextView>(R.id.priceProduct).text = "$${args.product.price}"
+        //view.findViewById<ImageView>(R.id.imgProduct).setImageBitmap(args.product.image)
+        //view.findViewById<RatingBar>(R.id.detailsRatingBar).rating =
+          //  Random.nextDouble(0.0, 5.0).toFloat()
+        //view.findViewById<TextView>(R.id.detailsRatings).text = (0..300).random().toString()
+        //view.findViewById<TextView>(R.id.descriptionProduct).text = args.product.description
+        //view.findViewById<TextView>(R.id.interestPrice).text =
+         //   "$${String.format("%.2f", (args.product.price / 6))}"
+        /*view.findViewById<Button>(R.id.addToCartBtn).setOnClickListener {
+            findNavController().navigate(R.id.action_productDetailsFragment_to_cartFragment, null)
+
+        }*/
+    }
+
+    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //Boton carrito
         view.findViewById<View>(R.id.button).setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_productFragment_to_cartFragment)
         )
-    }
+    }*/
     private fun ImageView.setImageBitmap(img: String) {
         val imageView = findViewById<ImageView>(R.id.imgProduct)
 
@@ -97,4 +140,4 @@ class ProductFragment : Fragment() {
             }
         }
     }
-}
+    }

@@ -46,8 +46,18 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val buttonRegister = view.findViewById<TextView>(R.id.Register)
+
+        val options = navOptions {
+            anim {
+                enter = R.anim.slide_in_right
+                exit = R.anim.slide_out_left
+                popEnter = R.anim.slide_in_left
+                popExit = R.anim.slide_out_right
+
+            }
+        }
         buttonRegister?.setOnClickListener{
-            findNavController().navigate(R.id.registerFragment, null)
+            findNavController().navigate(R.id.action_homeFragment_to_registerFragment, null,options)
         }
         val buttonLogIn = view.findViewById<Button>(R.id.btnLogin)
         buttonLogIn?.setOnClickListener{
