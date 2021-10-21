@@ -21,4 +21,5 @@
     <string name="button_cart_title">Agregar al Carrito</string>
     <string name="description">Descripción</string>
     <string name="description_detail">Lorem ipsum here va la descripcion</string>
+    <string name="product_detail_transition_name">CardView</string>
 </resources>

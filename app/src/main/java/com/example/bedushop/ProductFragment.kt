@@ -1,7 +1,7 @@
 package com.example.bedushop
-
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.media.Image
 import android.os.Bundle
 import android.os.Handler
@@ -17,10 +17,12 @@ import android.widget.*
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.transition.MaterialContainerTransform
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
+
 
 
 class ProductFragment : Fragment() {
@@ -36,10 +38,21 @@ class ProductFragment : Fragment() {
 
 
         val view = inflater.inflate(R.layout.product_fragment, container, false)
-        sharedElementEnterTransition =
-             TransitionInflater.from(context).inflateTransition(R.transition.transition1)
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
+            // The drawing view is the id of the view above which the container transform
+            // will play in z-space.
+            drawingViewId = R.id.my_nav_host_fragment
+            duration = resources.getInteger(R.integer.material_motion_duration_long_1).toLong()
+            // Set the color of the scrim to transparent as we also want to animate the
+            // list fragment out of view
+            scrimColor = Color.TRANSPARENT
+            //setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
+        }
+
+        //sharedElementEnterTransition =
+             //TransitionInflater.from(context).inflateTransition(R.transition.transition1)
                 //androidx.transition.TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-        postponeEnterTransition(250, TimeUnit.MILLISECONDS)
+        //postponeEnterTransition(250, TimeUnit.MILLISECONDS)
     /*
         val titleView = view.findViewById<TextView>(R.id.titleProduct)
         val priceView = view.findViewById<TextView>(R.id.priceProduct)
@@ -69,8 +82,17 @@ class ProductFragment : Fragment() {
 
 
         val title: TextView = view.findViewById(R.id.titleProduct)
+        val price: TextView = view.findViewById(R.id.priceProduct)
+        val image: ImageView = view.findViewById(R.id.imgProduct)
+        val description : TextView = view.findViewById(R.id.descriptionProduct)
         title.text = args.product.title
         title.transitionName = args.product.title
+        price.text = args.product.price
+        price.transitionName = args.product.price
+        image.setImageBitmap(args.product.image)
+        image.transitionName = args.product.image
+        description.text = args.product.description
+
     }
 
     private fun initViews(view: View) {
@@ -140,4 +162,5 @@ class ProductFragment : Fragment() {
             }
         }
     }
+
     }

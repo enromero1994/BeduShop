@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionInflater
+import com.google.android.material.transition.MaterialElevationScale
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.product_fragment.*
@@ -51,12 +52,32 @@ class ProductListFragment : Fragment() {
         }
     }
 
-    private val ProductItemListener = RecyclerAdapter.OnClickListener { product, textView ->
+    private val ProductItemListener = RecyclerAdapter.OnClickListener { product, textView, textView2, imageView ->
+
+        exitTransition = MaterialElevationScale(false).apply {
+            duration = resources.getInteger(
+                R.integer.material_motion_duration_long_1
+            ).toLong()
+        }
+        reenterTransition = MaterialElevationScale(true).apply {
+            duration = resources.getInteger(
+                R.integer.material_motion_duration_long_1
+            ).toLong()
+        }
+        val emailCardDetailTransitionName = getString(
+                R.string.product_detail_transition_name
+        )
+
         val direction: NavDirections =
             ProductListFragmentDirections.actionProductListFragmentToProductFragment(product)
 
+
         val extras = FragmentNavigatorExtras(
-            textView to product.title
+            textView to product.title,
+            textView2 to product.price,
+            imageView to product.image
+
+
         )
         findNavController().navigate(direction,extras)
     }
