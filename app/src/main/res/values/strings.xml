@@ -23,5 +23,11 @@
     <string name="description_detail">Lorem ipsum here va la descripcion</string>
     <string name="product_detail_transition_name">CardView</string>
     <string name="productTransitionName">product_transition</string>
+    <string name="logout_text">Cerrar sesión</string>
+    <string name="add_addres">Agregar dirección</string>
+    <string name="actualLocation">Ubicacion actual</string>
+    <string name="updateLocation">Actualizar</string>
+
+
 
 </resources>

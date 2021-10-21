@@ -18,6 +18,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.transition.MaterialContainerTransform
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
@@ -103,7 +104,8 @@ class ProductFragment : Fragment() {
         title.transitionName = args.product.title
         price.text = args.product.price
         price.transitionName = args.product.price
-        image.setImageBitmap(args.product.image)
+        Picasso.get().load(args.product.image).into(image)
+       // image.setImageBitmap(args.product.image)
         image.transitionName = args.product.image
         description.text = args.product.description
 
@@ -137,7 +139,7 @@ class ProductFragment : Fragment() {
             Navigation.createNavigateOnClickListener(R.id.action_productFragment_to_cartFragment)
         )
     }*/
-    private fun ImageView.setImageBitmap(img: String) {
+    /*private fun ImageView.setImageBitmap(img: String) {
         val imageView = findViewById<ImageView>(R.id.imgProduct)
 
         // Declaring executor to parse the URL
@@ -175,6 +177,6 @@ class ProductFragment : Fragment() {
                 e.printStackTrace()
             }
         }
-    }
+    }*/
 
     }

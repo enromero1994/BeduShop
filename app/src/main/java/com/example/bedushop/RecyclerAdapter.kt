@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import java.util.concurrent.Executors
 
 
@@ -41,7 +42,8 @@ class RecyclerAdapter(
             title.transitionName = product.title
             price.text = product.price
             price.transitionName = product.price
-            image.setImageBitmap(product.image)
+            Picasso.get().load(product.image).into(image)
+            //image.setImageBitmap(product.image)
             image.transitionName = product.image
 
 
@@ -79,7 +81,7 @@ class RecyclerAdapter(
 
 
 }
-private fun ImageView.setImageBitmap(img: String) {
+/*private fun ImageView.setImageBitmap(img: String) {
     val imageView = findViewById<ImageView>(R.id.imgProduct)
 
     // Declaring executor to parse the URL
@@ -118,3 +120,4 @@ private fun ImageView.setImageBitmap(img: String) {
         }
     }
 }
+*/
