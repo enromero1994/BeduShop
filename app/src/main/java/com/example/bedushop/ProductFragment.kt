@@ -42,12 +42,26 @@ class ProductFragment : Fragment() {
             // The drawing view is the id of the view above which the container transform
             // will play in z-space.
             drawingViewId = R.id.my_nav_host_fragment
-            duration = resources.getInteger(R.integer.material_motion_duration_long_1).toLong()
+            duration = resources.getInteger(R.integer.transition_motion_duration_medium).toLong()
             // Set the color of the scrim to transparent as we also want to animate the
             // list fragment out of view
             scrimColor = Color.TRANSPARENT
-            //setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
+            setAllContainerColors(resources.getColor(R.color.secondaryTextColor))
         }
+
+        // sharedElementEnterTransition = MaterialContainerTransform().apply {
+            // The drawing view is the id of the view above which the container transform
+            // will play in z-space.
+         //   drawingViewId = R.id.my_nav_host_fragment
+           // duration = resources.getInteger(R.integer.material_motion_duration_long_1).toLong()
+            // Set the color of the scrim to transparent as we also want to animate the
+            // list fragment out of view
+           // scrimColor = Color.TRANSPARENT
+            //setAllContainerColors(requireContext().themeColor(R.attr.colorSurface))
+        //}
+
+
+
 
         //sharedElementEnterTransition =
              //TransitionInflater.from(context).inflateTransition(R.transition.transition1)

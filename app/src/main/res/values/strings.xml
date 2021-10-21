@@ -22,4 +22,6 @@
     <string name="description">Descripción</string>
     <string name="description_detail">Lorem ipsum here va la descripcion</string>
     <string name="product_detail_transition_name">CardView</string>
+    <string name="productTransitionName">product_transition</string>
+
 </resources>

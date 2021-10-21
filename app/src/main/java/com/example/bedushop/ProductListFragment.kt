@@ -3,6 +3,7 @@ package com.example.bedushop
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
@@ -20,6 +21,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.product_fragment.*
 import kotlinx.android.synthetic.main.product_list_fragment.*
+import kotlinx.android.synthetic.main.product_list_fragment.view.*
 import java.io.IOException
 import kotlin.math.log
 
@@ -34,8 +36,11 @@ class ProductListFragment : Fragment() {
         // Inflate the layout for this fragment
         sharedElementReturnTransition =
             TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-        return inflater.inflate(R.layout.product_list_fragment, container, false)
 
+
+        var view = inflater.inflate(R.layout.product_list_fragment, container, false)
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,6 +50,7 @@ class ProductListFragment : Fragment() {
         val list = getProducts(requireContext())
         val adapter = RecyclerAdapter(list, ProductItemListener)
         recyclerView.adapter = adapter
+
         // When user hits back button transition takes backward
         postponeEnterTransition()
         recyclerView.doOnPreDraw {
@@ -55,18 +61,11 @@ class ProductListFragment : Fragment() {
     private val ProductItemListener = RecyclerAdapter.OnClickListener { product, textView, textView2, imageView ->
 
         exitTransition = MaterialElevationScale(false).apply {
-            duration = resources.getInteger(
-                R.integer.material_motion_duration_long_1
-            ).toLong()
+            duration = resources.getInteger(R.integer.transition_motion_duration_medium).toLong()
         }
         reenterTransition = MaterialElevationScale(true).apply {
-            duration = resources.getInteger(
-                R.integer.material_motion_duration_long_1
-            ).toLong()
+            duration = resources.getInteger(R.integer.transition_motion_duration_medium).toLong()
         }
-        val emailCardDetailTransitionName = getString(
-                R.string.product_detail_transition_name
-        )
 
         val direction: NavDirections =
             ProductListFragmentDirections.actionProductListFragmentToProductFragment(product)
@@ -95,8 +94,8 @@ class ProductListFragment : Fragment() {
     }*/
 
     //override fun onActivityCreated(savedInstanceState: Bundle?) {
-      //  super.onActivityCreated(savedInstanceState)
-        //setUpRecyclerView()
+    //  super.onActivityCreated(savedInstanceState)
+    //setUpRecyclerView()
 
     //}
 
@@ -135,6 +134,20 @@ class ProductListFragment : Fragment() {
         val jsonString = getJsonDataFromAsset(context)
         val listProductType = object : TypeToken<List<Product>>() {}.type
         return Gson().fromJson(jsonString, listProductType)
+
     }
+    /*
+    private fun showProgressBar(view: View){
+        view.homeProgressBar.visibility = VISIBLE
+        view.recyclerProducts.visibility = View.GONE
+    }
+
+    private fun hideProgressBar(view:View){
+
+        view.homeProgressBar.visibility = View.GONE
+        view.recyclerProducts.visibility = VISIBLE
+    }
+    */
+
 
 }

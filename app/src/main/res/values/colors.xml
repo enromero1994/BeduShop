@@ -12,6 +12,14 @@
     <color name="green">#00FF00</color>
     <color name="primaryBedu">#172126</color>
     <color name="secondaryBedu">#f03c15</color>
+    <color name="primaryColor">#f03c15</color>
+    <color name="primaryLightColor">#ff7244</color>
+    <color name="primaryDarkColor">#b50000</color>
+    <color name="secondaryColor">#172126</color>
+    <color name="secondaryLightColor">#3e484e</color>
+    <color name="secondaryDarkColor">#000000</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#ffffff</color>
 
 
 </resources>
