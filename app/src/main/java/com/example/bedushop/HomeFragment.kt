@@ -12,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment() {
 
@@ -30,7 +31,8 @@ class HomeFragment : Fragment() {
     ): View? {
         setHasOptionsMenu(true)
 
-        var view = inflater.inflate(R.layout.home_fragment, container, false)
+        var view = inflater.
+        inflate(R.layout.home_fragment, container, false)
         email = view.findViewById(R.id.email)
         password = view.findViewById(R.id.password)
         email_Error = view.findViewById(R.id.emailError);
@@ -61,16 +63,18 @@ class HomeFragment : Fragment() {
         }
         val buttonLogIn = view.findViewById<Button>(R.id.btnLogin)
         buttonLogIn?.setOnClickListener{
-            if(email.text.isEmpty()){
-                email_Error.isVisible = true
-            }
-            if(password.text.isEmpty()){
-                password_Error.isVisible = true
-            }
-            if(email.text.isNotEmpty() && password.text.isNotEmpty()){
+            if(email.text.isEmpty() || password.text.isEmpty()){
+                Snackbar.make(view,"Faltan completar campos", Snackbar.LENGTH_SHORT)
+                    .setAction("Entendido") {
+                        // Responds to click on the action
+                    }
+                    .show()
 
+            }else{
                 findNavController().navigate(R.id.productListFragment, null)
             }
+
+
 
         }
 
