@@ -3,99 +3,111 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/secondaryTextColor"
     tools:context=".AddressFragment"
-    android:paddingVertical="20dp">
+   >
+
 
     <ImageView
         android:id="@+id/closeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="60dp"
         android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
         android:paddingVertical="5dp"
         android:src="@drawable/ic_close"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="true"
-        android:focusable="true"/>
-
-
-    <TextView
-        android:id="@+id/addAdressText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/add_addres"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.card.MaterialCardView
+    <TextView
+        android:id="@+id/actualLocation"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginVertical="20dp"
-        android:backgroundTint="@color/secondaryTextColor"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:text="@string/actualLocation"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addAdressText"
-        app:strokeWidth="0.5dp"
-        app:strokeColor="@color/secondaryLightColor">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="18dp">
+    </TextView>
 
-            <TextView
-                android:id="@+id/actualLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/actualLocation"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+    <Button
+        android:id="@+id/ActualizarDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:layout_marginTop="68dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/ic_gps"
+        android:drawablePadding="10dp"
+        android:text="@string/updateLocation"
+        android:textAllCaps="true"
+        android:textColor="@color/secondaryColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.427"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actualAdressText"
+        app:layout_constraintVertical_bias="0.287" />
 
-            </TextView>
+    <TextView
+        android:id="@+id/tvLongitude"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Longitude: -"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLatitude" />
 
-            <TextView
-                android:id="@+id/actualAdressText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="La Rioja Argentina "
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/actualLocation">
+    <TextView
+        android:id="@+id/tvLatitude"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Latitude: -"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actualLocation" />
 
-            </TextView>
+    <TextView
+        android:id="@+id/actualAdressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Ciudad no disponible"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLongitude">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:layout_marginTop="20dp"
-                android:drawableLeft="@drawable/ic_gps"
-                android:drawablePadding="10dp"
-                android:text="@string/updateLocation"
-                android:textAllCaps="true"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/actualAdressText"
-                android:layout_marginVertical="10dp"
-                android:textColor="@color/secondaryColor"/>
+    </TextView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btOpenMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ir al Mapa"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/ActualizarDireccion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actualAdressText"
+        app:layout_constraintVertical_bias="0.629" />
 
-    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
